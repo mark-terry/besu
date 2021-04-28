@@ -73,6 +73,7 @@ public class VertxRequestTransmitter implements RequestTransmitter {
               .exceptionHandler(result::completeExceptionally)
               .setChunked(false);
       contentType.ifPresent(ct -> request.putHeader(HttpHeaders.CONTENT_TYPE, ct));
+
       if (content.isPresent()) {
         request.end(content.get());
       } else {
